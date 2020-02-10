@@ -6,8 +6,6 @@ node(label)
         def GIT_CREDENTIAL_ID ='MFC-user'
         def GIT_BRANCH='master'
         
-         try {
-
         stage('Git Checkout') {
             git branch: GIT_BRANCH, url: GIT_URL,credentialsId: GIT_CREDENTIAL_ID
         }
@@ -25,14 +23,4 @@ node(label)
         stage('Workspace Cleanup'){
             deleteDir()
         }
-        currentBuild.result = 'SUCCESS'
-        echo "RESULT: ${currentBuild.result}"
-        echo "Finished: ${currentBuild.result}"
-              
-         } 
-        catch (Exception err){
-        currentBuild.result = 'FAILURE'
-        echo "RESULT: ${currentBuild.result}"
-        echo "Finished: ${currentBuild.result}"
-               } 
 }
