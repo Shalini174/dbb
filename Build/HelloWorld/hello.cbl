@@ -22,5 +22,5 @@
              END-IF
            END-IF
            GOBACK.
-       END PROGRAM TESTPGM.
+       END PROGRAM HELLO.
 
