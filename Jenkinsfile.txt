@@ -22,6 +22,9 @@ node(label)
                  {
                   step([$class: 'ZOSJobSubmitter', JESINTERFACELEVEL1: true, MaxCC: '0000', credentialsId: 'ZDT', deleteJobFromSpool: false, jobFile: 'UNITTEST.txt', jobLogToConsole: true, port: 21, server: '10.108.92.20', wait: true, waitTime: 2])
                  }
+        stage('Workspace Cleanup'){
+            deleteDir()
+        }
         currentBuild.result = 'SUCCESS'
         echo "RESULT: ${currentBuild.result}"
         echo "Finished: ${currentBuild.result}"
