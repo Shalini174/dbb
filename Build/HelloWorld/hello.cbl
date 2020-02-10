@@ -1,7 +1,26 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.     HELLO.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       LINKAGE SECTION.
 
-       PROCEDURE DIVISION.
-           DISPLAY "Hello world!!!".
-           STOP RUN.
+       01  RCV-PARMS.
+           02  ACCOUNT-BALANCE  PIC 9(9) VALUE ZERO.
+           02  AMOUNT           PIC 9(9) VALUE ZERO.
+           02  ACTION           PIC X(10) VALUE SPACES.
+
+       PROCEDURE DIVISION USING RCV-PARMS.
+       0001-MAIN.
+           DISPLAY 'INSIDE 0001-MAIN PARA'.
+           IF ACTION = 'DEBIT'
+            COMPUTE ACCOUNT-BALANCE = ACCOUNT-BALANCE - AMOUNT
+           ELSE
+             IF ACTION = 'CREDIT'
+               COMPUTE ACCOUNT-BALANCE = ACCOUNT-BALANCE + AMOUNT
+             END-IF
+           END-IF
+           GOBACK.
+       END PROGRAM TESTPGM.
 

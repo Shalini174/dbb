@@ -1,12 +1,12 @@
 import com.ibm.dbb.build.*
 
-println("Copying /rsusr/HelloWorld/HelloWorld/hello.cbl to IBMUSER.TEST.COBOL(HELLO) . . .")
-def copy = new CopyToPDS().file(new File("/rsusr/HelloWorld/HelloWorld/hello.cbl")).dataset("IBMUSER.TEST.COBOL").member("HELLO")
+println("Copying /u/ibmuser/HelloWorld/hello.cbl to IBMUSER.PGM.COBOL(HELLO) . . .")
+def copy = new CopyToPDS().file(new File("/u/ibmuser/HelloWorld/hello.cbl")).dataset("IBMUSER.PGM.COBOL").member("HELLO")
 copy.execute()
 
-println("Compiling IBMUSER.TEST.COBOL(HELLO). . .")
+println("Compiling IBMUSER.PGM.COBOL(HELLO). . .")
 def compile = new MVSExec().pgm("IGYCRCTL").parm("LIB")
-compile.dd(new DDStatement().name("SYSIN").dsn("IBMUSER.TEST.COBOL(HELLO)").options("shr"))
+compile.dd(new DDStatement().name("SYSIN").dsn("IBMUSER.PGM.COBOL(HELLO)").options("shr"))
 compile.dd(new DDStatement().name("SYSLIN").dsn("IBMUSER.COBOBJS.OBJ(HELLO)").options("shr"))
 compile.dd(new DDStatement().name("SYSUT1").options("cyl space(5,5) unit(vio) new"))
 compile.dd(new DDStatement().name("SYSUT2").options("cyl space(5,5) unit(vio) new"))
