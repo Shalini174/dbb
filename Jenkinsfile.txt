@@ -10,7 +10,6 @@ node(label)
 
         stage('Git Checkout') {
             git branch: GIT_BRANCH, url: GIT_URL,credentialsId: GIT_CREDENTIAL_ID
-            sh 'ls'
         }
         stage('Compile') 
                 {
