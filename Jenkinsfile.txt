@@ -14,8 +14,8 @@ node(label)
         stage('Compile') 
                 {
                     echo "starting compilation"
-                step([$class: 'ZOSJobSubmitter', JESINTERFACELEVEL1: false, MaxCC: '0004', credentialsId: 'zoscredentials', 
-                deleteJobFromSpool: false, jobFile: 'Compilation.txt', jobLogToConsole: false, port: 21, server: '${zDnT_IP}',
+                step([$class: 'ZOSJobSubmitter', JESINTERFACELEVEL1: false, MaxCC: '0004', credentialsId: 'ZDT', 
+                deleteJobFromSpool: false, jobFile: 'BUILD.JCL.txt', jobLogToConsole: false, port: 21, server: '10.108.92.20',
                 wait: true, waitTime: 1])
         }
         stage('Unit Test')
